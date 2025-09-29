@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { lazy, StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./App.css";
@@ -6,9 +6,11 @@ import "./App.css";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Header from "./components/Header.jsx";
-import About from "./components/About.jsx";
+// import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
 import Error from "./Error.jsx";
+
+const About = lazy(() => import("./components/About.jsx"));
 
 const router = createBrowserRouter([
   {
@@ -22,7 +24,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />
+        element: <About />,
       },
       {
         path: "/contact",
