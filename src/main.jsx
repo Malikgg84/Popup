@@ -9,13 +9,17 @@ import Header from "./components/Header.jsx";
 // import About from "./components/About.jsx";
 // import Contact from "./components/Contact.jsx";
 import Error from "./Error.jsx";
+import Counter from "./components/Counter.jsx";
+import OldCounter from "./components/OldCounter.jsx";
 
 const Contact = lazy(() => import("./components/Contact.jsx"));
-//! if we want to import that file which is not by default exporting than follow this 
-const About = lazy(() => import("./components/About.jsx").then(res => {
-  console.log(res);
-  return {default : res.About}
-}));
+//! if we want to import that file which is not by default exporting than follow this
+const About = lazy(() =>
+  import("./components/About.jsx").then((res) => {
+    console.log(res);
+    return { default: res.About };
+  }),
+);
 
 const router = createBrowserRouter([
   {
@@ -25,7 +29,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <h1>Hello Home</h1>,
+        // in old counter if we pass some thing is props than we can excess it with this keyword 
+        element: <OldCounter counterName="New Counter" />,
       },
       {
         path: "/about",
